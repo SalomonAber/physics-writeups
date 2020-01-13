@@ -1,0 +1,218 @@
+\section{Gas Laws}
+CPACs 1, 2, 3, 4 and 5
+\hfill
+\nth{15} September 2019
+
+\subsection{Boyle's Law}
+\setcounter{equation}{0}
+\subsubsection{Aim}
+The aim of this experiment is to investigate Boyle's Law which states that:
+\begin{quoting}
+  at a constant temperature the pressure, p, and volume, V, of a gas are inversely proportional.
+\end{quoting}
+
+\subsubsection{Method}
+\begin{enumerate}
+  \item Loosen the vent screw and move the piston so that the metal disc at the head of the piston is at the centre of the volume scale.
+  \item Check that the pressure gauge reads an atmospheric pressure of approximately $\expnumber{1}{5}$Pa.
+  \item Tighten the vent screw so that you have a fixed mass of gas in the cylinder.
+  \item Take a series of readings both above and below atmospheric pressure.
+  \item Loosen the vent screw again and move the piston to the 3.0 mark.
+  \item Tighten the screw and repeat the measurements with the new mass of gas.
+\end{enumerate}
+
+\subsubsection{Results}
+The following results were gained by following the method.
+Note that p is the starting position of the piston.
+
+\begin{figure*}
+  \begin{subfigure}{0.5\linewidth}
+    \centering
+    \pgfplotstabletypeset[
+      columns={p,v},
+      columns/p/.style={column type = |p{2.3cm},column name= Pressure (Pa)},
+      columns/v/.style={column type = |p{2.3cm}|,column name= Volume (cm$^3$)},
+      string type
+    ]{data/r_b_1_1.txt}
+    \caption{p = 3}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.5\linewidth}
+    \centering
+    \pgfplotstabletypeset[
+      columns={p,v},
+      columns/p/.style={column type = |p{2.3cm},column name= Pressure (Pa)},
+      columns/v/.style={column type = |p{2.3cm}|,column name= Volume (cm$^3$)},
+      string type
+    ]{data/r_b_1_2.txt}
+    \caption{p = 2}
+  \end{subfigure}
+\end{figure*}
+
+\subsubsection{Graph}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[ylabel={Pressure (Pa)},xlabel={Volume (cm$^3$)}]
+      \addplot[line width=1,color=blue,smooth,each nth point=5] table [x=v,y=p]{data/r_b_1_1.txt};
+      \addplot[line width=1,color=red,smooth,each nth point=5] table [x=v,y=p]{data/r_b_1_2.txt};
+      \legend{p=3,p=2}
+    \end{axis}
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection{Analysis}
+In this experiment, the volume that the gas was contained in was reduced. As a result, its particles came closer together and collided more frequently with each other and the gas syringe causing the pressure to increase. The graph plotted was expected as Boyels law implies that $p=\frac{k}{V}$.
+\subsubsection{Evaluation}
+As only two sets of data where measured, it is still unclear how the line of pressure against volume changes as the starting position of the piston within the gas syringe is changed. To improve this experiment more measurements from different starting positions should be used.
+
+\subsection{Charles's Law}
+\setcounter{equation}{0}
+
+\subsubsection{Aim}
+The aim of this experiment is to determine a Celsius value for absolute zero by investigating Charles's Law which states that:
+\begin{quoting}
+  at a constant pressure, the volume, V, of a gas is directly proportional to its absolute temperature, T.
+\end{quoting}
+
+\subsubsection{Method}
+\begin{enumerate}
+  \item Ensure the syringe is fully closed and connect it to the flask.
+  \item Connect the flask to the rubber tubing making sure that the seal is airtight.
+  \item Suspend the flask using a clamp stand inside the large beaker and fill the beaker with water covering the flask.
+  \item Heat the water with Bunsen burner and take temperature and volume readings at regular intervals until the air in the flask is approximately $50^\circ$C.
+  \item Measure the total volume of the flask and tubing by submerging them in water and measuring the volume of the water removed.
+  \item The total volume at each temperature will therefore be the total volume previously recorded plus the measurement on the gas syringe.
+\end{enumerate}
+
+\subsubsection{Safety}
+As a Bunsen burner was used in this experiment the following safety precautions where taken:
+\begin{itemize}
+  \item Safety goggles where worn.
+  \item Participants where standing.
+\end{itemize}
+
+\subsubsection{Results}
+The following results were gained by following the method.
+\begin{center}
+  \pgfplotstabletypeset[
+    columns={v,t},
+    columns/v/.style={column type = |p{2.5cm},column name= Volume (cm$^3$)},
+    columns/t/.style={column type = |p{2.5cm}|,column name= Temperature ($^\circ$C)},
+    string type
+  ]{data/r_b_2.txt}
+\end{center}
+
+\subsubsection{Graph}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[ylabel={Volume (cm$^3$)},xlabel={Temperature ($^\circ$C)}]
+      \addplot [only marks, mark = *] table [x=t,y=v]{data/r_b_2.txt};
+      \addplot [thick, red] table [
+        x=t,
+        y={create col/linear regression={y=v}}
+      ]{data/r_b_2.txt};
+    \end{axis}
+    \xdef\regaBII{\pgfplotstableregressiona}
+    \xdef\regbBII{\pgfplotstableregressionb}
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection{Analysis}
+When you heat a gas the particles gain kinetic energy.
+At constant pressure, this means they move more quickly and further apart, and so the volume of the gas increases.
+It is intuitive that the value of absolute zero is the value at which the volume of an ideal gas is zero as the negative volume cannot exist in classical physics.
+As a result, we can determine the value of absolute zero by extrapolating our graph.
+To do this we find our gradient and y-intercept using a line of best fit:
+\begin{gather}
+    m \approxeq \regaBII \\
+    c \approxeq \regbBII + 166
+\end{gather}
+Note that the volume of the flask and tubing has been added to the y-intercept. We can now find the value of absolute zero by finding the x-intercept:
+\begin{gather}
+  0 =  (\regaBII)x+\regbBII \\
+  x = \frac{\regbBII + 166}{\regaBII} \approxeq {\thexintfloatexpr [5] -(\regbBII+166)/\regaBII \relax} ^\circ C
+\end{gather}
+
+\subsubsection{Evaluation}
+The last three data points measured were removed as at high temperatures the seal starts to leak.
+
+\subsection{The Pressure Law}
+\setcounter{equation}{0}
+
+\subsubsection{Aim}
+The aim of this experiment is to determine a Celsius value for absolute zero by investigating the Pressure Law which states that:
+\begin{quoting}
+  at constant volume, the pressure, p, of a gas is directly proportional to its absolute temperature, T.
+\end{quoting}
+
+\subsubsection{Method}
+\begin{enumerate}
+  \item Heat the water in the beaker with a Bunsen burner and record the pressure against temperature.
+  \item Stop recording when the temperature reaches 100$^\circ$C and turn off the Bunsen burner.
+\end{enumerate}
+A few changes had to be made to the method:
+\begin{itemize}
+  \item A jolly was used instead of a datalogger as it was certain that the volume inside the vessel would remain the same.
+  \item The pressure gauge was regularly tapped to make sure the correct pressure was being read.
+\end{itemize}
+
+\subsubsection{Results}
+The following results were gained by following the method.
+\begin{center}
+  \pgfplotstabletypeset[
+    columns={p,t},
+    columns/p/.style={column type = |p{2.5cm},column name= Pressure (Pa)},
+    columns/t/.style={column type = |p{2.5cm}|,column name= Temperature ($^\circ$C)},
+    string type
+  ]{data/r_b_3.txt}
+\end{center}
+
+\subsubsection{Graph}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[ylabel={Pressure (Pa)},xlabel={Temperature ($^\circ$C)}]
+      \addplot [only marks, mark = *] table [x=t,y=p]{data/r_b_3.txt};
+      \addplot [thick, red] table [
+        x=t,
+        y={create col/linear regression={y=p}}
+      ]{data/r_b_3.txt};
+    \end{axis}
+    \xdef\regaBIII{\pgfplotstableregressiona}
+    \xdef\regbBIII{\pgfplotstableregressionb}
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection{Analysis}
+When you heat a gas the particles gain kinetic energy.
+This means they move faster.
+If the volume doesn't change, the particles will collide with each other and their container more often and at higher speed, increasing the pressure inside the container.
+It is intuitive that the value of absolute zero is the value at which the pressure of an ideal gas is zero as negative pressure cannot exist in classical physics.
+As a result, we can determine the value of absolute zero by extrapolating our graph.
+To do this we find our gradient and y-intercept using a line of best fit:
+\begin{gather}
+    m \approxeq \regaBIII \\
+    c \approxeq \regbBIII
+\end{gather}
+We can now find the value of absolute zero by finding the x-intercept:
+\begin{gather}
+  0 =  (\regaBIII)x+\regbBIII \\
+  x = \frac{-\regbBIII}{\regaBIII} \approxeq {\thexintfloatexpr [5] -\regbBIII/\regaBIII \relax} ^\circ C
+\end{gather}
+
+\subsubsection{Evaluation}
+The uncertainty in the value of absolute zero calculated is:
+\begin{gather}
+  \text{uncertainty}_{p}=\frac{0.02}{0.98}\cdot 100 = 2.04\% \\
+  \text{uncertainty}_{T}=\frac{1.0}{25}\cdot 100 = 4.00\% \\
+  \text{total uncertainty}= 2.04 + 4.00 = 6.04\%
+\end{gather}
+  The error in our value taking absolute-zero to be -273.15 \cite{wiki:absoluteZero} is:
+\begin{gather}
+  \text{error}=\frac{274.15{\thexintfloatexpr [5] -\regbBIII/\regaBIII \relax}}{274.15}\cdot 100 = 3.46\% \\
+\end{gather}
+As 3.46\% is less than 6.04\% the experiment was valid.
+
+\newpage

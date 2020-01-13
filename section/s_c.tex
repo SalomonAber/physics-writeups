@@ -1,0 +1,58 @@
+\section{Resonance Tubes}
+CPACs 1 and 4
+\hfill
+\nth{30} September 2019
+
+\subsection{Method}
+\begin{enumerate}
+  \item Connect the loudspeaker to the \SI{4}{\ohm} output of the signal generator.
+  \item Set the signal generator to the \SI{100}{\hertz} \text{-} \SI{1}{\kilo\hertz} range, with the output turned
+down.
+  \item Adjust the water level in the tube so that it is between \SI{20}{\centi\metre} and \SI{40}{\centi\metre} from the top.
+  \item Set the frequency to 300 Hz and increase the output until you can just hear the note.
+  \item By lowering the funnel, allow the water level to drop, and listen carefully. You should hear
+the note suddenly get louder and then fainter as the water level passes through the
+resonance position.
+  \item Measure the distance, $l_{1}$, from the top of the tube to the resonance position. Now allow
+the water level to drop and find a second resonance position, $l_{1}$.
+  \item Repeat for different frequencies between \SI{300}{\hertz} and \SI{600}{\hertz}.
+\end{enumerate}
+
+\subsection{Results}
+The wavelength column was caclulated using the formular:
+\begin{equation}
+  c = f \lambda \text{ with } \lambda = 2 \cdot (l_2-l_1)
+\end{equation}
+\begin{center}
+  \pgfplotstabletypeset[
+    columns={f,l1,l2,lm},
+    columns/f/.style={column type = |p{2.0cm},column name= Frequency (Hz)},
+    columns/l1/.style={column type = |p{2.0cm},column name= $l_{1}$ (cm)},
+    columns/l2/.style={column type = |p{2.0cm}|,column name= $l_{2}$ (cm)},
+    columns/lm/.style={column type = p{2.0cm}|,column name= Speed (m/s)},
+    string type
+  ]{data/r_c_1.txt}
+\end{center}
+
+\subsection{Analysis}
+The average speed was \SI{331.85}{\metre\per\second}. The true speed of sound was calculated to be \SI{344.08}{\hertz} using the following equation with t as \SI{22}{\celsius}:
+\begin{equation}
+  c=331 \sqrt{1 + \frac{t}{273}}
+\end{equation}
+
+The percentage difference between the true and calculated speed of sound was:
+\begin{equation}
+  \frac{344.08-331.85}{344} \cdot 100 = 3.55 \%
+\end{equation}
+
+The uncertainty in our speed of sound was:
+\begin{equation}
+  \frac{0.1}{13} \cdot 100 \cdot 2 = 1.54\%
+\end{equation}
+
+
+\subsection{Evaluation}
+As $1.54<3.55$ our results are not accurate.
+The main reason for this is that there was systematic error in our measurements of $l_1$ and $l_2$.
+This was because we left a gap between the speaker and tube and did not account for this in our calculations.
+Another reason could be that as we left a gap between the speaker and tube, not all the sound was directed down the tube.

@@ -1,0 +1,74 @@
+\documentclass{report}
+
+% Dates
+\usepackage[super]{nth}
+
+% Tables
+\usepackage{pgfplotstable}
+\pgfplotstableset{
+  every head row/.style={before row={\hline},after row=\hline},
+  every last row/.style={after row=\hline}
+}
+
+% Units
+\usepackage{siunitx}
+
+% Graphs
+\usepackage{pgfplots}
+
+% Make sure same version is used while compiling
+\pgfplotsset{compat=1.15}
+
+% Calculations
+\usepackage{xintexpr}
+
+% Change section labeling
+\renewcommand\thesection{\Alph{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\renewcommand\thesubsubsection{\arabic{subsection}}
+
+% Exponential number formatting
+\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}
+
+% Sub-files
+\usepackage{subfiles}
+
+% Force figure positioning
+\usepackage{float}
+
+% Multiple inline Tables
+\usepackage{subcaption}
+
+% Quotes
+\usepackage[font=itshape]{quoting}
+
+% Gathers
+\usepackage{amsmath,amssymb}
+
+% Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% No indents
+\setlength\parindent{0pt}\setlength\parindent{0pt}
+
+% Title-page text
+\title{Practical Reports}
+\author{Salomon Aengenheytser-Aber}
+\date{Year 13 Term 1}
+
+\begin{document}
+
+  % Write-ups
+  \subfile{section/s_a}
+  \subfile{section/s_b}
+  \subfile{section/s_c}
+  \subfile{section/s_d}
+  \subfile{section/s_e}
+
+  % References
+  \newpage
+  \bibliographystyle{ieeetr}
+  \bibliography{references}
+
+\end{document}

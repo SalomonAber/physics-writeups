@@ -1,7 +1,7 @@
 \section{Capacitor Discharge}
 CPACs 1 and 4
 \hfill
-\nth{11} November 2019
+\nth{11} December 2019
 
 \subsection{Method}
 \begin{enumerate}
@@ -18,13 +18,16 @@ CPACs 1 and 4
 \end{enumerate}
 
 \subsection{Diagram}
-\begin{center}
-  \includegraphics[width=8cm]{i_e}
-\end{center}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm]{i_t1_e}
+  \caption{Diagram for Exp. E}
+\end{figure}
 
 \subsection{Results}
 
-\begin{center}
+\begin{figure}[H]
+  \centering
   \pgfplotstabletypeset[
     columns={t,t1, t2, ta},
     columns/t/.style={column type = |p{1.5cm},column name= t (s)},
@@ -32,8 +35,9 @@ CPACs 1 and 4
     columns/t2/.style={column type = p{1.5cm}|,column name= $\theta_{n,2}$ ($^{\circ}$)},
     columns/ta/.style={column type = p{1.5cm}|,column name= $\theta_{n,avg}$ ($^{\circ}$)},
     string type
-  ]{data/r_e.txt}
-\end{center}
+  ]{data/r_t1_e.txt}
+  \caption{Table for Exp. E}
+\end{figure}
 
 \subsection{Graph}
 
@@ -41,40 +45,45 @@ CPACs 1 and 4
   \centering
   \begin{tikzpicture}
     \begin{axis}[ylabel={Natural log of $\theta_1$ divided by $\theta_2$},xlabel={Time interval, t}]
-      \addplot [mark = *] table [x=t,y=ln]{data/r_e_1.txt};
+      \addplot [mark = *] table [x=t,y=ln]{data/r_t1_e_1.txt};
       \addplot [thick, red] table [
         x=t,
         y={create col/linear regression={y=ln, x=t}}
-      ]{data/r_e_1.txt};
+      ]{data/r_t1_e_1.txt};
     \end{axis}
     \xdef\regaE{\pgfplotstableregressiona}
     \xdef\regbE{\pgfplotstableregressionb}
   \end{tikzpicture}
+  \caption{Graph for Exp. E}
 \end{figure}
 
 \subsection{Analysis}
 We know that the capacitance is equivalent to:
-\begin{equation}
+\begin{equation*}
   \frac{t}{R \cdot \ln{\frac{\theta_1}{\theta_2}}}.
-\end{equation}
+\end{equation*}
+
 This can be rearanged to give:
-\begin{equation}
+\begin{equation*}
   \ln{\frac{\theta_1}{\theta_2}} = \frac{t}{C \cdot R}.
-\end{equation}
+\end{equation*}
+
 Using the gradient of our graph we can conclude that:
-\begin{equation}
+\begin{equation*}
   m = \frac{1}{C \cdot R},
-\end{equation}
+\end{equation*}
+
 Which gives a capacitance of:
-\begin{equation}
+\begin{equation*}
   C = \frac{1}{\regaE \cdot 10^6} \\
   C = 2.9 \mu F
-\end{equation}
+\end{equation*}
 
 The capacitor is known to have a value of around $2\mu F$, however, as no true value was found, no comparisons can be made.
 
 \subsection{Evaluation}
-To improve this experiment a digital galvanometer should be used as there would be no error in measuring the maximum deflection. This would decrease uncertainty.
+To improve this experiment a digital galvanometer should be used as there would be no error in measuring the maximum deflection.
+This would decrease uncertainty.
 
 \subsection{Conclusion}
 This experiment produced valid results as the value obtained was expected and in the correct order of magnitude.

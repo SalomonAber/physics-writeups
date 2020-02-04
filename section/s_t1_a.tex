@@ -1,15 +1,15 @@
-\section{Hall Probe}
+\section{Hall Probe Investigation}
 CPACs 1, 4 and 5
 \hfill
 \nth{11} November 2019
 
-\subsection{Background}
+\subsection{History}
 The Hall effect is the production of a voltage difference across an electrical conductor, transverse to an electric current in the conductor and to an applied magnetic field perpendicular to the current.
-In 1879 Edwin Hall was exploring whether magnetic fields interacted with the conductors or the electric current itself, and discovered the Hall effect while he was working on his doctoral degree at Johns Hopkins University in Baltimore, Maryland. \cite{  wiki:halleffect}
+In 1879 Edwin Hall was exploring whether magnetic fields interacted with the conductors or the electric current itself, and discovered the Hall effect while he was working on his doctoral degree at Johns Hopkins University in Baltimore, Maryland.\cite{wiki:halleffect}
 \par
-A Hall effect sensor is a device that is used to measure the magnitude of a magnetic field. Its output voltage is directly proportional to the magnetic field strength through it. Hall sensors are commonly used to time the speed of wheels and shafts. \cite{ wiki:sensor}
+A Hall effect sensor is a device that is used to measure the magnitude of a magnetic field. Its output voltage is directly proportional to the magnetic field strength through it. Hall sensors are commonly used to time the speed of wheels and shafts.\cite{wiki:sensor}
 
-\subsection{Distance Method}
+\subsection{Method}
 
 \subsubsection{Method}
 \begin{enumerate}
@@ -21,7 +21,8 @@ A Hall effect sensor is a device that is used to measure the magnitude of a magn
 \end{enumerate}
 
 \subsubsection{Diagram}
-\begin{center}
+\begin{figure}[H]
+  \centering
   \begin{tikzpicture}[scale=0.6]
     \draw (8,0) -- (2,0) -- (2,8) -- (8,8) -- (8,6) -- (4,6) -- (4,2) -- (8,2) -- (8,0);
     \node at (3.5,0.5) {Magnet};
@@ -32,26 +33,30 @@ A Hall effect sensor is a device that is used to measure the magnitude of a magn
     \draw (9,3.5) rectangle (15,4.5);
     \node at (10.4,5) {Hall Probe};
   \end{tikzpicture}
-\end{center}
+  \caption{Circuit in Exp. A Method I}
+\end{figure}
 
 \subsubsection{Results}
-\begin{center}
+\begin{figure}[H]
+  \centering
   \pgfplotstabletypeset[
     columns={d, m},
     columns/d/.style={column type = |p{3cm},column name= distance (cm)},
     columns/m/.style={column type = |p{3cm}|,column name= magnetic flux density (mT)},
     string type
-  ]{data/r_a_1.txt}
-\end{center}
+  ]{data/r_t1_a_1.txt}
+  \caption{Table for Exp. A Method I}
+\end{figure}
 
 \subsubsection{Graph}
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{axis}[ylabel={distance (cm)},xlabel={magnetic flux density (mT)}]
-      \addplot [mark = *] table [x=d,y=m]{data/r_a_1.txt};
+      \addplot [mark = *] table [x=d,y=m]{data/r_t1_a_1.txt};
     \end{axis}
   \end{tikzpicture}
+  \caption{Graph for Exp. A Method I}
 \end{figure}
 
 \subsubsection{Evaluation}
@@ -64,8 +69,7 @@ The accuracy could be improved by making sure there is no external magnetic fiel
 \subsubsection{Conclusion}
 The shape of the graph above is observed to be inversely proporional to the cube of the distance as expected.\cite{mille:magnetic}
 
-\subsection{Angle Method}
-
+\subsection{Method}
 \subsubsection{Method}
 \begin{enumerate}
   \item Using a clamp stand, situate the Hall Probe vertically between the two poles of the horse shoe magnet.
@@ -76,34 +80,39 @@ The shape of the graph above is observed to be inversely proporional to the cube
 \end{enumerate}
 
 \subsubsection{Diagram}
-\begin{center}
+\begin{figure}[H]
+  \centering
   \begin{tikzpicture}[scale=0.6]
     \draw (8,0) -- (2,0) -- (2,8) -- (8,8) -- (8,6) -- (4,6) -- (4,2) -- (8,2) -- (8,0);
     \node at (3.5,0.5) {Magnet};
     \draw (6,4) circle (1);
     \node at (8.5,5) {Hall Probe};
   \end{tikzpicture}
-\end{center}
+  \caption{Diagram of Exp. A Method II}
+\end{figure}
 
 \subsubsection{Results}
-\begin{center}
+\begin{figure}[H]
+  \centering
   \pgfplotstabletypeset[
     columns={a, m},
     columns/a/.style={column type = |p{3cm},column name= angle ($\deg$)},
     columns/m/.style={column type = |p{3cm}|,column name= magnetic flux density (mT)},
     string type
-  ]{data/r_a_2.txt}
-\end{center}
+  ]{data/r_t1_a_2.txt}
+  \caption{Table for Exp. A Method II}
+\end{figure}
 
 \subsubsection{Graph}
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{axis}[ylabel={angle ($\deg$)},xlabel={magnetic flux density (mT)}]
-      \addplot [mark = *] table [x=a,y=m]{data/r_a_2.txt};
-      \addplot [thick, red] table [x=a,y=c]{data/r_a_2.txt};
+      \addplot [mark = *] table [x=a,y=m]{data/r_t1_a_2.txt};
+      \addplot [thick, red] table [x=a,y=c]{data/r_t1_a_2.txt};
     \end{axis}
   \end{tikzpicture}
+  \caption{Graph for Exp. A Method II}
 \end{figure}
 
 \subsubsection{Analysis}

@@ -1,0 +1,168 @@
+\section{Search Coil Investigation}
+CPACs 1, 2, 4 and 5
+\hfill
+\nth{27} January 2020
+
+\subsection{Abstract}
+The aim of this experiment is to investigate the magnetic field produced by a Helmholtz coil as well as the respective emf induced in a Search coil.
+
+\subsection{Equiptment}
+\begin{itemize}
+\item Search coil magnetometer
+\item Helmholtz coil
+\item Signal generator
+\item Oscilloscope
+\item Teltron Stand
+\end{itemize}
+
+\subsection{Methods}
+
+\subsubsection{Distance Method}
+\begin{enumerate}
+    \item Connect the Helmholtz coil to the signal generator.
+    \item Connect the search coil to the oscilloscope.
+    \item Using clamp stands position the search coil in the center of the Helmholtz coil such that maximum emf is induced.
+    \item Move the search coil along the axis through the Helmholtz coil by increments of 1cm for the first 10cm and increments of 2cm after that.
+    \item Record the maximum voltage displayed on the oscilloscope for each distance.
+    \item Plot a graph of distance, x, against voltage, v.
+\end{enumerate}
+
+\subsubsection{Angle Method}
+\begin{enumerate}
+    \item Connect the Helmholtz coil to the signal generator.
+    \item Connect the search coil to the oscilloscope.
+    \item Using clamp stands position the search coil in the center of the Helmholtz coil such that maximum emf is induced.
+    \item Rotate the Helmholtz coil in the z-axis in $10^{\circ}$  increments for values between $-90^{\circ}$ and $90^{\circ}$.
+    \item Record the maximum voltage displayed on the oscilloscope for each angle.
+    \item Plot a graph of angle, $\theta$ against voltage, v.
+\end{enumerate}
+
+\subsection{Derivation}
+The formula for the on-axis field due to a Helmholtz coil is given by the Biot-Savart law\cite{wiki:biotsavart} to be:
+\begin{equation*}
+    B\left(x\right) = \frac{\mu_0  \cdot n  \cdot I  \cdot r^2}{2\left(r^2 + x^2\right)^{3/2}}
+\end{equation*}
+Where:
+\begin{itemize}
+    \item $\mu_0$ is the permeability constant
+    \item $n$ is the number of turns
+    \item $I$ is the coil current
+    \item $r$ is the coil radius
+    \item $x$ is the coil distance, on-axis, to the point
+\end{itemize}
+
+The voltage produced by the signal generator is modelled by:
+\begin{equation*}
+    V = 20 \cdot \sin \left( \num{5e3} \cdot t \right)
+\end{equation*}
+
+The resistance of the Helmholtz coil is estimated to be:
+\begin{equation*}
+    R = \frac{\rho L}{A} = \frac{\num{1.72e-8} \cdot 320 \cdot 2 \pi \cdot 0.075}{\pi \cdot 0.0003^2} \approx \SI{9.173}{\ohm}
+\end{equation*}
+
+As a result, the Helmholtz coil current at a time, $t$, is:
+\begin{equation*}
+    I \left( t \right) = \frac{V \left( t \right)}{R}=\frac{20 \cdot \sin \left(\num{5e3} \cdot t\right) }{9.173}
+\end{equation*}
+
+This gives a magnetic field of:
+\begin{equation*}
+    B \left( x,t \right) = \frac{\num{0.246658e-5} \cdot \sin \left( \num{5e3} \cdot t \right)}{\left( 0.075^2 + x^2 \right)^{3/2}}
+\end{equation*}
+ 
+The induced voltage in the search coil magnetometer is described by Faraday's law of Induction\cite{wiki:faraday}:
+\begin{equation*}
+    e = - N\frac{\mathrm d \Phi}{\mathrm dt}
+\end{equation*}
+
+With N being the number of terms.
+By Gauss's law\cite{wiki:gauss} for magnetism, the magnetic flux is:
+
+\begin{equation*}
+    \Phi_B = \mathbf{B} \cdot \mathbf{S} = BS \cos \theta
+\end{equation*}
+
+Where $\theta$ is the angle between the axes of the Helmholtz coil and Search coil and $\cdot$ is the dot product.
+The surface area of the Search coil is:
+
+\begin{equation*}
+    S = 2\pi \cdot 0.00508 \cdot 2\pi \cdot 0.005 \cdot 5000 \approx \SI{986.96}{\metre\squared}
+\end{equation*}
+
+Taking the derivitive of the magnetic flux with respect to time gives:
+\begin{equation*}
+    \frac{\mathrm d\Phi_B}{\mathrm dt} = \frac{\num{0.246658e-5} \cdot \sin \left( \num{5e3} \cdot t \right) }{\left( 0.075^2 + x^2 \right)^{3/2}} \cdot \num{5e3} \cdot 986.96 \cdot \cos \theta
+\end{equation*}
+
+Hence the maximum voltage measured should be:
+\begin{equation*}
+    e_{max} \left( x \right) = 320 \cdot \frac{\num{0.246658e-5} }{\left( 0.075^2 + x^2 \right)^{3/2}} \cdot \num{5e3} \cdot 986.96 \cdot \cos \theta
+\end{equation*}
+
+\subsection{Results}
+
+In order to match the expected and observed voltages, a correction factor of $\num{5.08e-6}$ was used.
+
+\subsubsection{Tables}
+
+\begin{figure}[H]
+    \centering
+  \pgfplotstabletypeset[
+    columns={x, e, v},
+    columns/x/.style={column type = |p{3.5cm},column name= {distance, x (m)}},
+    columns/e/.style={column type = |p{3.5cm}|,column name= {expected Voltage, e (V)}},
+    columns/v/.style={column type = p{3.5cm}|,column name= {observed Voltage, v (V)}},
+    string type
+  ]{data/t2/r_c_1.txt}
+  \caption{Data from Method I}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \pgfplotstabletypeset[
+      columns={t, e, v},
+      columns/t/.style={column type = |p{3.5cm},column name= {angle, $\theta$ ($^{\circ}$)}},
+      columns/e/.style={column type = |p{3.5cm}|,column name= {expected Voltage, e (V)}},
+      columns/v/.style={column type = p{3.5cm}|,column name= {observed Voltage, v (V)}},
+      string type
+    ]{data/t2/r_c_2.txt}
+    \caption{Data from Method II}
+\end{figure}
+
+\subsubsection{Graphs}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ylabel={voltage, v (V)},xlabel={distance, x (m)}]
+        \addplot [mark = *] table [x=x,y=v]{data/t2/r_c_1.txt};
+        \addlegendentry{observed}
+        \addplot [thick, red] table [x=x,y=e]{data/t2/r_c_1.txt};
+        \addlegendentry{expected}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Graph for Method I}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ylabel={voltage, v (V)},xlabel={angle, $\theta$ ($^{\circ}$)}]
+        \addplot [mark = *] table [x=t,y=v]{data/t2/r_c_2.txt};
+        \addlegendentry{observed}
+        \addplot [thick, red] table [x=t,y=e]{data/t2/r_c_2.txt};
+        \addlegendentry{expected}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Graph for Method II}
+\end{figure}
+
+\subsection{Evaluation}
+As seen in the graphs above, with the use of a correction factor, our predictions are almost a perfect fit for the data.
+The correction factor is small enough to remove the need for any calculation of uncertainty.
+The Resistance of the Helmholtz coil, and surface area of the Search coil where cruedly approximated.
+This is the most likely reason for the large correction factor.
+Although the constants derived where incorrect, the data followed the expected shape therefore partially confirming the Biot-Savart law and Faraday's law of Induction.
+This experiment could be improved through the use of more accurate equiptment, i.e. using a digital protractor.
+In addition to this, important constants such as the resistance in the coils should be experimentally found instead of being approximated.

@@ -15,8 +15,6 @@
 
 % Graphs
 \usepackage{pgfplots}
-
-% Make sure same version is used while compiling
 \pgfplotsset{compat=1.15}
 
 % Calculations
@@ -49,26 +47,35 @@
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 
+% Bookmarking
+\usepackage[hidelinks, bookmarks=true]{hyperref}
+\setcounter{tocdepth}{4}
+
 % No indents
 \setlength\parindent{0pt}\setlength\parindent{0pt}
 
 % Title-page text
 \title{Practical Reports}
 \author{Salomon Aengenheytser-Aber}
-\date{Year 13 Term 1}
 
 \begin{document}
 
+  \nocite{*}
+
+  \maketitle
+ 
+  \tableofcontents
+  
   % Write-ups
-  \subfile{section/s_a}
-  \subfile{section/s_b}
-  \subfile{section/s_c}
-  \subfile{section/s_d}
-  \subfile{section/s_e}
-
-  % References
+  \include{section/s_t1_a}
+  \include{section/s_t1_b}
+  \include{section/s_t1_c}
+  \include{section/s_t1_d}
+  \include{section/s_t1_e}
+  
+  % Reference
   \newpage
-  \bibliographystyle{ieeetr}
+  \bibliographystyle{unsrt}
   \bibliography{references}
-
+  
 \end{document}

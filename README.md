@@ -10,11 +10,14 @@ There are three main folders:
 
 ## Naming conventions
 **Section**: s_t{termNumber}_{experimentLetter}.tex
+
 	e.g. s_t1_a.tex
 	
 **Data**: r_t{termNumber}_{experimentLetter}_{Optional: Method}_{SetNm}.txt
+
 	e.g. r_t1_1_1.txt
 	
 **Image**: i_t{termNumber}_{experimentLetter}.jpg
+
 	e.g. i_t1_a.jpg
 	

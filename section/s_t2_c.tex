@@ -114,7 +114,7 @@ In order to match the expected and observed voltages, a correction factor of $\n
     columns/e/.style={column type = |p{3.5cm}|,column name= {expected Voltage, e (V)}},
     columns/v/.style={column type = p{3.5cm}|,column name= {observed Voltage, v (V)}},
     string type
-  ]{data/t2/r_c_1.txt}
+  ]{data/r_t2_c_1.txt}
   \caption{Data from Method I}
 \end{figure}
 
@@ -126,7 +126,7 @@ In order to match the expected and observed voltages, a correction factor of $\n
       columns/e/.style={column type = |p{3.5cm}|,column name= {expected Voltage, e (V)}},
       columns/v/.style={column type = p{3.5cm}|,column name= {observed Voltage, v (V)}},
       string type
-    ]{data/t2/r_c_2.txt}
+    ]{data/r_t2_c_2.txt}
     \caption{Data from Method II}
 \end{figure}
 
@@ -136,9 +136,9 @@ In order to match the expected and observed voltages, a correction factor of $\n
     \centering
     \begin{tikzpicture}
       \begin{axis}[ylabel={voltage, v (V)},xlabel={distance, x (m)}]
-        \addplot [mark = *] table [x=x,y=v]{data/t2/r_c_1.txt};
+        \addplot [mark = *] table [x=x,y=v]{data/r_t2_c_1.txt};
         \addlegendentry{observed}
-        \addplot [thick, red] table [x=x,y=e]{data/t2/r_c_1.txt};
+        \addplot [thick, red] table [x=x,y=e]{data/r_t2_c_1.txt};
         \addlegendentry{expected}
       \end{axis}
     \end{tikzpicture}
@@ -149,9 +149,9 @@ In order to match the expected and observed voltages, a correction factor of $\n
     \centering
     \begin{tikzpicture}
       \begin{axis}[ylabel={voltage, v (V)},xlabel={angle, $\theta$ ($^{\circ}$)}]
-        \addplot [mark = *] table [x=t,y=v]{data/t2/r_c_2.txt};
+        \addplot [mark = *] table [x=t,y=v]{data/r_t2_c_2.txt};
         \addlegendentry{observed}
-        \addplot [thick, red] table [x=t,y=e]{data/t2/r_c_2.txt};
+        \addplot [thick, red] table [x=t,y=e]{data/r_t2_c_2.txt};
         \addlegendentry{expected}
       \end{axis}
     \end{tikzpicture}

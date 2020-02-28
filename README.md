@@ -21,3 +21,5 @@ There are three main folders:
 
 	e.g. i_t1_a.jpg
 	
+## Built PDF
+The main.pdf file should be the most recent build of main.tex.

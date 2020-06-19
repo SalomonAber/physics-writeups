@@ -9,15 +9,15 @@ There are three main folders:
  - **Image** folder stores image files
 
 ## Naming conventions
-**Section**: s_t{termNumber}_{experimentLetter}.tex
+**Section**: s\_t{termNumber}\_{experimentLetter}.tex
 
 	e.g. s_t1_a.tex
 	
-**Data**: r_t{termNumber}_{experimentLetter}_{Optional: Method}_{SetNm}.txt
+**Data**: r\_t{termNumber}\_{experimentLetter}\_{Optional: Method}\_{SetNm}.txt
 
 	e.g. r_t1_1_1.txt
 	
-**Image**: i_t{termNumber}_{experimentLetter}.jpg
+**Image**: i\_t{termNumber}\_{experimentLetter}.jpg
 
 	e.g. i_t1_a.jpg
 	
